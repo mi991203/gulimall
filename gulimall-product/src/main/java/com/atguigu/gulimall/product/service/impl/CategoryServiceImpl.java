@@ -4,6 +4,7 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -48,6 +49,26 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     @Override
     public void removeMenuByIds(List<Long> asList) {
         baseMapper.deleteBatchIds(asList);
+    }
+
+    @Override
+    public List<Long> getCategoryPathById(Long catelogId) {
+        final List<Long> resultList = new ArrayList<>();
+        recursionCategoryTree(catelogId, resultList);
+        return resultList;
+    }
+
+    private void recursionCategoryTree(Long catelogId, List<Long> resultList) {
+        final CategoryEntity categoryEntity = baseMapper.selectById(catelogId);
+        if (categoryEntity != null) {
+            final Long parentCid = categoryEntity.getParentCid();
+            if (parentCid != null) {
+                recursionCategoryTree(parentCid, resultList);
+            }
+        }
+        if (catelogId != 0) {
+            resultList.add(catelogId);
+        }
     }
 
 
