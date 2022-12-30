@@ -31,7 +31,10 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
 
     @Override
     public PageUtils queryPage(Map<String, Object> params, Long catId) {
-        final QueryWrapper<AttrGroupEntity> queryWrapper = new QueryWrapper<AttrGroupEntity>().eq("catelog_id", catId);
+        final QueryWrapper<AttrGroupEntity> queryWrapper = new QueryWrapper<AttrGroupEntity>();
+        if (catId != 0) {
+            queryWrapper.eq("catelog_id", catId);
+        }
         final String key = (String) params.get("key");
         if (!StringUtils.isEmpty(key)) {
             queryWrapper.and(wrapper -> {

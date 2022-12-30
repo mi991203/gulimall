@@ -2,6 +2,7 @@ package com.atguigu.gulimall.product.service.impl;
 
 import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.Query;
+import com.atguigu.gulimall.product.service.CategoryBrandRelationService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,12 +18,15 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.atguigu.gulimall.product.dao.CategoryDao;
 import com.atguigu.gulimall.product.entity.CategoryEntity;
 import com.atguigu.gulimall.product.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity> implements CategoryService {
+    @Resource
+    private CategoryBrandRelationService categoryBrandRelationService;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -52,10 +56,17 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     }
 
     @Override
-    public List<Long> getCategoryPathById(Long catelogId) {
+    public Long[] findCatelogPath(Long catelogId) {
         final List<Long> resultList = new ArrayList<>();
         recursionCategoryTree(catelogId, resultList);
-        return resultList;
+        return resultList.toArray(new Long[resultList.size()]);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateCascade(CategoryEntity category) {
+        this.baseMapper.updateById(category);
+        categoryBrandRelationService.updateCategory(category.getCatId(), category.getName());
     }
 
     private void recursionCategoryTree(Long catelogId, List<Long> resultList) {
