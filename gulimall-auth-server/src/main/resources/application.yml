@@ -1,0 +1,19 @@
+server:
+  port: 8150
+
+spring:
+  application:
+    name: gulimall-auth-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  redis:
+    host: 192.168.137.11
+    port: 6379
+
+ribbon:
+
+
+
+

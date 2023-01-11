@@ -38,3 +38,9 @@ mybatis-plus:
 
 server:
   port: 10000
+#配置线程池
+gulimall:
+  thread:
+    coreSize: 20
+    maxSize: 200
+    keepAliveTime: 10

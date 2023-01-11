@@ -1,13 +1,10 @@
 package com.atguigu.gulimall.thirdparty.controller;
 
-import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
 import com.atguigu.common.utils.R;
-import com.sun.org.apache.xalan.internal.xsltc.dom.SimpleResultTreeImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +22,7 @@ import java.util.Map;
 public class OssController {
     @Resource
     private OSSClient ossClient;
-    @Value("${spring.cloud.alicloud.access-key}")
+    @Value("${spring.cloud.alicloud.sms.access-key}")
     private String accessKey;
 
 

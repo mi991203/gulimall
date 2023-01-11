@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    alicloud:
+      access-key: LTAI5tMBX8nT2Ho1YCgF8Avi
+      secret-key: jpKs92Q0NorfSqbQ6lrDXrI5aGjkij
+      oss:
+        access-key: LTAI5tMBX8nT2Ho1YCgF8Avi
+        secret-key: jpKs92Q0NorfSqbQ6lrDXrI5aGjkij
+        endpoint: oss-cn-hangzhou.aliyuncs.com
+      sms:
+        access-key: LTAI5tMBX8nT2Ho1YCgF8Avi
+        secret-key: jpKs92Q0NorfSqbQ6lrDXrI5aGjkij
