@@ -21,6 +21,9 @@ spring:
     port: 6379
   cache:
     type: redis
+  session:
+    store-type: redis
+    timeout: 600
 
 
 mybatis-plus:

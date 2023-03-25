@@ -31,8 +31,8 @@ public class SmsAliyunTest {
 
         // Configure Credentials authentication information, including ak, secret, token
         StaticCredentialProvider provider = StaticCredentialProvider.create(Credential.builder()
-                .accessKeyId("LTAI5tMBX8nT2Ho1YCgF8Avi")
-                .accessKeySecret("jpKs92Q0NorfSqbQ6lrDXrI5aGjkij")
+                .accessKeyId("xxx")
+                .accessKeySecret("yyy")
                 //.securityToken("<your-token>") // use STS token
                 .build());
 

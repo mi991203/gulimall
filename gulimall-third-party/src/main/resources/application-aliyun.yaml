@@ -1,12 +1,10 @@
 spring:
   cloud:
     alicloud:
-      access-key: xxx
-      secret-key: yyy
       oss:
         access-key: xxx
-        secret-key: yyy
+        secret-key: xxx
         endpoint: oss-cn-hangzhou.aliyuncs.com
       sms:
         access-key: xxx
-        secret-key: yyy
+        secret-key: xxx
